@@ -1,8 +1,5 @@
-{:source-paths ["src/cljs" "test/cljs"]
+{:deps {:aliases [:cljs]}
  :nrepl {:port 8777}
-
- :dependencies
- []
 
  :dev-http
  {8280 "resources/public"}
