@@ -17,6 +17,10 @@
     (when-not (zero? exit) (throw (ex-info "Tests failed" {}))))
   opts)
 
+(defn resources "Build resources." [_]
+  (b/delete {:path "resources/public/js/compiled"})
+  (b/process {:command-args ["npx" "shadow-cljs" "release" "app"]}))
+
 (defn- uber-opts [opts]
   (assoc opts
          :lib lib :main main
@@ -28,6 +32,8 @@
 
 (defn uber "Build the uberjar." [opts]
   (b/delete {:path "target"})
+  (println "Building resources...")
+  (resources opts)
   (let [opts (uber-opts opts)]
     (println "Copying source...")
     (b/copy-dir {:src-dirs ["resources" "src/clj"] :target-dir class-dir})
