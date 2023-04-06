@@ -1,0 +1,17 @@
+{:source-paths ["src/cljs" "test/cljs"]
+ :nrepl {:port 8777}
+
+ :dependencies
+ []
+
+ :dev-http
+ {8280 "resources/public"}
+
+ :builds
+ {:app
+  {:target     :browser
+   :output-dir "resources/public/js/compiled"
+   :asset-path "/js/compiled"
+   :modules    {:app {:init-fn agorgl.clj-fullstack.core/init}}
+   :devtools   {:preloads []}
+   :dev        {:compiler-options {:closure-defines {}}}}}}
