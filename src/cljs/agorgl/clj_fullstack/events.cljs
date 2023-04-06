@@ -1,0 +1,8 @@
+(ns agorgl.clj-fullstack.events
+  (:require [re-frame.core :as re-frame]
+            [agorgl.clj-fullstack.db :as db]))
+
+(re-frame/reg-event-db
+ ::initialize-db
+ (fn [_ _]
+   db/default-db))
