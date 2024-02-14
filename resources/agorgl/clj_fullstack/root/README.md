@@ -8,7 +8,7 @@ FIXME: write usage documentation!
 
 Invoke a library API function from the command-line:
 
-    $ clojure -X {{top/ns}}.{{main/ns}}/foo :a 1 :b '"two"'
+    $ clojure -X {{top/ns}}.{{main/ns}}.core/foo :a 1 :b '"two"'
     {:a 1, :b "two"} "Hello, World!"
 
 Run the project's tests (they'll fail until you edit them):
