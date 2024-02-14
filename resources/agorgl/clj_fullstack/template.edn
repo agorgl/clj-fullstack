@@ -10,7 +10,7 @@
    {"build.tmpl" "build.clj"
     "deps.tmpl"  "deps.edn"}
    :only]
-  ["src" "src/{{top/file}}/{{main/file}}"
+  ["src/clj" "src/clj/{{top/file}}/{{main/file}}"
    {"core.tmpl" "core.clj"}]
-  ["test" "test/{{top/file}}/{{main/file}}"
+  ["test/clj" "test/clj/{{top/file}}/{{main/file}}"
    {"core_test.tmpl" "core_test.clj"}]]}
