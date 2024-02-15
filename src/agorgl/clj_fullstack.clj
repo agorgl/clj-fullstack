@@ -10,6 +10,10 @@
    "react"
    "react-dom"])
 
+(def clj-deps
+  ["io.pedestal/pedestal.jetty"
+   "ch.qos.logback/logback-classic"])
+
 (def cljs-deps
   ["reagent"
    "re-frame"])
@@ -20,9 +24,14 @@
   (let [versions
         (->> (concat
               (for [d node-deps]
-                [(keyword "deps" d)
+                [(keyword "deps" (-> d (str/split #"/") (last)))
                  (str/trim-newline
                   (:out (sh "npm" "view" d "version")))])
+              (for [d clj-deps]
+                [(keyword "deps" (-> d (str/split #"/") (last)))
+                 (-> (:out (sh "clojure" "-X:deps" "find-versions" ":lib" d ":n" "1"))
+                     (edn/read-string)
+                     :mvn/version)])
               (for [d cljs-deps]
                 [(keyword "deps" d)
                  (-> (:out (sh "clojure" "-X:deps" "find-versions" ":lib" d ":n" "1"))

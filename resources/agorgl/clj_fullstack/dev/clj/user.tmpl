@@ -1,4 +1,11 @@
 (ns user
   (:require
    [clojure.core :refer [Throwable->map]]
-   [clojure.repl :refer [apropos dir doc find-doc pst source]]))
+   [clojure.repl :refer [apropos dir doc find-doc pst source]]
+   [{{top/ns}}.{{main/ns}}.server :as server]))
+
+(comment
+  ; Server lifecycle management
+  (server/go)
+  (server/start)
+  (server/stop))
