@@ -16,6 +16,8 @@
    {"core.tmpl" "core.clj"}]
   ["test/clj" "test/clj/{{top/file}}/{{main/file}}"
    {"core_test.tmpl" "core_test.clj"}]
+  ["dev/clj" "dev/clj"
+   {"user.tmpl" "user.clj"}]
   ["src/cljs" "src/cljs/{{top/file}}/{{main/file}}"
    {"core.tmpl" "core.cljs"
     "config.tmpl" "config.cljs"
@@ -24,4 +26,6 @@
     "subs.tmpl" "subs.cljs"
     "views.tmpl" "views.cljs"}]
   ["test/cljs" "test/cljs/{{top/file}}/{{main/file}}"
-   {"core_test.tmpl" "core_test.cljs"}]]}
+   {"core_test.tmpl" "core_test.cljs"}]
+  ["dev/cljs" "dev/cljs"
+   {"user.tmpl" "user.cljs"}]]}
