@@ -17,6 +17,11 @@
   ["test/clj" "test/clj/{{top/file}}/{{main/file}}"
    {"core_test.tmpl" "core_test.clj"}]
   ["src/cljs" "src/cljs/{{top/file}}/{{main/file}}"
-   {"core.tmpl" "core.cljs"}]
+   {"core.tmpl" "core.cljs"
+    "config.tmpl" "config.cljs"
+    "db.tmpl" "db.cljs"
+    "events.tmpl" "events.cljs"
+    "subs.tmpl" "subs.cljs"
+    "views.tmpl" "views.cljs"}]
   ["test/cljs" "test/cljs/{{top/file}}/{{main/file}}"
    {"core_test.tmpl" "core_test.cljs"}]]}

@@ -1,20 +1,33 @@
 (ns agorgl.clj-fullstack
   (:require
    [clojure.string :as str]
+   [clojure.edn :as edn]
    [clojure.java.shell :refer [sh]]))
 
 (def node-deps
   ["npm-run-all"
-   "shadow-cljs"])
+   "shadow-cljs"
+   "react"
+   "react-dom"])
+
+(def cljs-deps
+  ["reagent"
+   "re-frame"])
 
 (defn data-fn
   "Result is merged onto existing options data."
   [data]
   (let [versions
-        (->> (for [d node-deps]
-               [(keyword "deps" d)
-                (str/trim-newline
-                 (:out (sh "npm" "view" d "version")))])
+        (->> (concat
+              (for [d node-deps]
+                [(keyword "deps" d)
+                 (str/trim-newline
+                  (:out (sh "npm" "view" d "version")))])
+              (for [d cljs-deps]
+                [(keyword "deps" d)
+                 (-> (:out (sh "clojure" "-X:deps" "find-versions" ":lib" d ":n" "1"))
+                     (edn/read-string)
+                     :mvn/version)]))
              (into {}))]
     (merge data versions)))
 
