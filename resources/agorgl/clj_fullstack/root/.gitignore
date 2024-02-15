@@ -16,6 +16,7 @@
 .project
 .rebel_readline_history
 .settings
+.shadow-cljs/
 .socket-repl-port
 .sw*
 .vscode
@@ -26,3 +27,5 @@
 /checkouts
 /classes
 /target
+/node_modules
+/resources/public/js/compiled

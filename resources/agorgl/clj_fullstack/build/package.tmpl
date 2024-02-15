@@ -1,0 +1,15 @@
+{
+  "name": "@{{group/id}}/{{artifact/id}}",
+  "scripts": {
+    "watch": "run-p -l *:watch",
+    "release": "run-s -l *:release",
+    "shadow:watch": "npx shadow-cljs watch app",
+    "shadow:release": "npx shadow-cljs release app"
+  },
+  "devDependencies": {
+    "npm-run-all": "^{{deps/npm-run-all}}",
+    "shadow-cljs": "^{{deps/shadow-cljs}}"
+  },
+  "dependencies": {
+  }
+}

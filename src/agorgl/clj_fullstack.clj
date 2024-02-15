@@ -1,12 +1,22 @@
-(ns agorgl.clj-fullstack)
+(ns agorgl.clj-fullstack
+  (:require
+   [clojure.string :as str]
+   [clojure.java.shell :refer [sh]]))
+
+(def node-deps
+  ["npm-run-all"
+   "shadow-cljs"])
 
 (defn data-fn
-  "Example data-fn handler.
-   Result is merged onto existing options data."
+  "Result is merged onto existing options data."
   [data]
-  ;; returning nil means no changes to options data
-  (println "data-fn returning nil")
-  nil)
+  (let [versions
+        (->> (for [d node-deps]
+               [(keyword "deps" d)
+                (str/trim-newline
+                 (:out (sh "npm" "view" d "version")))])
+             (into {}))]
+    (merge data versions)))
 
 (defn template-fn
   "Example template-fn handler.

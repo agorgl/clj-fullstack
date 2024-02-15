@@ -8,9 +8,15 @@
  :transform
  [["build" ""
    {"build.tmpl" "build.clj"
-    "deps.tmpl"  "deps.edn"}
+    "deps.tmpl"  "deps.edn"
+    "shadow-cljs.tmpl" "shadow-cljs.edn"
+    "package.tmpl" "package.json"}
    :only]
   ["src/clj" "src/clj/{{top/file}}/{{main/file}}"
    {"core.tmpl" "core.clj"}]
   ["test/clj" "test/clj/{{top/file}}/{{main/file}}"
-   {"core_test.tmpl" "core_test.clj"}]]}
+   {"core_test.tmpl" "core_test.clj"}]
+  ["src/cljs" "src/cljs/{{top/file}}/{{main/file}}"
+   {"core.tmpl" "core.cljs"}]
+  ["test/cljs" "test/cljs/{{top/file}}/{{main/file}}"
+   {"core_test.tmpl" "core_test.cljs"}]]}
