@@ -6,4 +6,8 @@
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
                       io.github.cognitect-labs/test-runner {:git/tag "v0.5.1" :git/sha "dfb30dd"}}}
   :build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.6"}}
-          :ns-default build}}}
+          :ns-default build}
+  :cljs {:extra-paths ["src/cljs" "test/cljs" "dev/cljs"]
+         :extra-deps {thheller/shadow-cljs {:mvn/version "{{deps/shadow-cljs}}"}
+                      reagent/reagent {:mvn/version "{{deps/reagent}}"}
+                      re-frame/re-frame {:mvn/version "{{deps/re-frame}}"}}}}}
