@@ -12,6 +12,9 @@
          ::http/type :jetty
          ::http/routes (routes-from (routes/routes))
          ::http/resource-path "public"
+         ::http/secure-headers {:content-security-policy-settings
+                                {:script-src "'self' 'unsafe-inline' 'unsafe-eval' https: http:"
+                                 :object-src "'none'"}}
          ::http/join? false}
         http/default-interceptors
         (cond-> dev-mode http/dev-interceptors))))
