@@ -4,6 +4,10 @@
    [clojure.repl :refer [apropos dir doc find-doc pst source]]
    [integrant.core :as ig]
    [integrant.repl :refer [clear go halt prep init reset reset-all]]
+   [{{top/ns}}.{{main/ns}}.config :as config]
    [{{top/ns}}.{{main/ns}}.system :as system]))
 
-(integrant.repl/set-prep! #(ig/prep (system/system-map)))
+(integrant.repl/set-prep!
+ #(-> (config/config-map)
+      (system/system-map)
+      (ig/prep)))

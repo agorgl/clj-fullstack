@@ -41,6 +41,12 @@
                     [item])))
                (into []))))))
 
+(defn service-opts [service-map opts]
+  (let [{:keys [host port]} opts]
+    (->> {::http/host host
+          ::http/port port}
+         (merge service-map))))
+
 (defn service-map [opts]
   (let [{:keys [dev-mode]
          :or {dev-mode dev-mode?}} opts]
@@ -52,6 +58,7 @@
                                 {:script-src "'self' 'unsafe-inline' 'unsafe-eval' https: http:"
                                  :object-src "'none'"}}
          ::http/join? false}
+        (service-opts opts)
         http/default-interceptors
         static-content-interceptors
         (cond-> dev-mode http/dev-interceptors))))

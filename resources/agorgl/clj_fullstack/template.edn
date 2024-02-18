@@ -14,6 +14,7 @@
    :only]
   ["src/clj" "src/clj/{{top/file}}/{{main/file}}"
    {"core.tmpl" "core.clj"
+    "config.tmpl" "config.clj"
     "routes.tmpl" "routes.clj"
     "server.tmpl" "server.clj"
     "service.tmpl" "service.clj"

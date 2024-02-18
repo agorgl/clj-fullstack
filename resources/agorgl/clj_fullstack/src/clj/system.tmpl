@@ -1,13 +1,17 @@
 (ns {{top/ns}}.{{main/ns}}.system
   (:require
    [integrant.core :as ig]
+   [{{top/ns}}.{{main/ns}}.config :refer [config-map]]
    [{{top/ns}}.{{main/ns}}.server :as server]))
 
-(defn system-map []
-  {::server {}})
+(defn system-map [config]
+  {::server
+   {:host (-> config :server :host)
+    :port (-> config :server :port)}})
 
 (defn start []
-  (-> (system-map)
+  (-> (config-map)
+      (system-map)
       (ig/prep)
       (ig/init)))
 
