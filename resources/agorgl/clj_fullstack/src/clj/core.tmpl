@@ -1,12 +1,12 @@
 (ns {{top/ns}}.{{main/ns}}.core
-  (:gen-class))
+  (:gen-class)
+  (:require
+   [{{top/ns}}.{{main/ns}}.system :as system]))
 
 (defn foo
   "I don't do a whole lot."
   [x]
   (prn x "Hello, World!"))
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (foo args))
+(defn -main [& args]
+  (system/start))

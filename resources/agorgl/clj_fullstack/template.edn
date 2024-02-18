@@ -16,7 +16,8 @@
    {"core.tmpl" "core.clj"
     "routes.tmpl" "routes.clj"
     "server.tmpl" "server.clj"
-    "service.tmpl" "service.clj"}]
+    "service.tmpl" "service.clj"
+    "system.tmpl" "system.clj"}]
   ["test/clj" "test/clj/{{top/file}}/{{main/file}}"
    {"core_test.tmpl" "core_test.clj"
     "service_test.tmpl" "service_test.clj"}]

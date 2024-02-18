@@ -1,0 +1,22 @@
+(ns {{top/ns}}.{{main/ns}}.system
+  (:require
+   [integrant.core :as ig]
+   [{{top/ns}}.{{main/ns}}.server :as server]))
+
+(defn system-map []
+  {::server {}})
+
+(defn start []
+  (-> (system-map)
+      (ig/prep)
+      (ig/init)))
+
+(defn stop [system]
+  (-> system
+      (ig/halt!)))
+
+(defmethod ig/init-key ::server [_ opts]
+  (server/start opts))
+
+(defmethod ig/halt-key! ::server [_ server]
+  (server/stop server))

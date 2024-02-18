@@ -2,10 +2,8 @@
   (:require
    [clojure.core :refer [Throwable->map]]
    [clojure.repl :refer [apropos dir doc find-doc pst source]]
-   [{{top/ns}}.{{main/ns}}.server :as server]))
+   [integrant.core :as ig]
+   [integrant.repl :refer [clear go halt prep init reset reset-all]]
+   [{{top/ns}}.{{main/ns}}.system :as system]))
 
-(comment
-  ; Server lifecycle management
-  (server/go)
-  (server/start)
-  (server/stop))
+(integrant.repl/set-prep! #(ig/prep (system/system-map)))

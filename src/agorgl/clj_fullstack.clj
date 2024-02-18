@@ -11,7 +11,9 @@
    "react-dom"])
 
 (def clj-deps
-  ["io.pedestal/pedestal.jetty"
+  ["integrant/integrant"
+   "integrant/repl"
+   "io.pedestal/pedestal.jetty"
    "ch.qos.logback/logback-classic"])
 
 (def cljs-deps
