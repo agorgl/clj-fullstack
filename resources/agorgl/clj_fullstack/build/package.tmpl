@@ -4,11 +4,14 @@
     "watch": "run-p -l *:watch",
     "release": "run-s -l *:release",
     "shadow:watch": "npx shadow-cljs watch app",
-    "shadow:release": "npx shadow-cljs release app"
+    "shadow:release": "npx shadow-cljs release app",
+    "tailwind:watch": "npx tailwindcss -i ./src/css/tailwind.css -o ./resources/public/css/compiled/site.css --watch",
+    "tailwind:release": "NODE_ENV=production npx tailwindcss -i ./src/css/tailwind.css -o ./resources/public/css/compiled/site.css --minify"
   },
   "devDependencies": {
     "npm-run-all": "^{{deps/npm-run-all}}",
-    "shadow-cljs": "^{{deps/shadow-cljs}}"
+    "shadow-cljs": "^{{deps/shadow-cljs}}",
+    "tailwindcss": "^{{deps/tailwindcss}}"
   },
   "dependencies": {
     "react": "^{{deps/react}}",

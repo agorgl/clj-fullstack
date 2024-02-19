@@ -8,7 +8,8 @@
   ["npm-run-all"
    "shadow-cljs"
    "react"
-   "react-dom"])
+   "react-dom"
+   "tailwindcss"])
 
 (def clj-deps
   ["aero/aero"

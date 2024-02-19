@@ -10,7 +10,8 @@
    {"build.tmpl" "build.clj"
     "deps.tmpl"  "deps.edn"
     "shadow-cljs.tmpl" "shadow-cljs.edn"
-    "package.tmpl" "package.json"}
+    "package.tmpl" "package.json"
+    "tailwind.config.tmpl" "tailwind.config.js"}
    :only]
   ["src/clj" "src/clj/{{top/file}}/{{main/file}}"
    {"core.tmpl" "core.clj"
@@ -34,4 +35,6 @@
   ["test/cljs" "test/cljs/{{top/file}}/{{main/file}}"
    {"core_test.tmpl" "core_test.cljs"}]
   ["dev/cljs" "dev/cljs"
-   {"user.tmpl" "user.cljs"}]]}
+   {"user.tmpl" "user.cljs"}]
+  ["src/css" "src/css"
+   {"tailwind.tmpl" "tailwind.css"}]]}
