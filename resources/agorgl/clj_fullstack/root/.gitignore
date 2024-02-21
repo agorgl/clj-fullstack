@@ -25,6 +25,7 @@
 *.swp
 *~
 /checkouts
+/gen
 /classes
 /target
 /node_modules

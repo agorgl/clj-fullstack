@@ -9,7 +9,12 @@
    "shadow-cljs"
    "react"
    "react-dom"
-   "tailwindcss"])
+   "tailwindcss"
+   "@babel/cli"
+   "@babel/core"
+   "@babel/preset-env"
+   "@babel/preset-react"
+   "@babel/preset-typescript"])
 
 (def clj-deps
   ["aero/aero"

@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: process.env.NODE_ENV == "production" ? ["./resources/public/js/compiled/app.js"] : ["./src/**/*.{html,js,cljs}", "./resources/public/js/compiled/cljs-runtime/*.js"],
+  content: process.env.NODE_ENV === "production"
+    ? ["./resources/public/js/compiled/app.js"]
+    : ["./src/**/*.{html,js,cljs}",
+       "./gen/**/*.{html,js,cljs}",
+       "./resources/public/js/compiled/cljs-runtime/*.js"],
   theme: {
     extend: {},
   },

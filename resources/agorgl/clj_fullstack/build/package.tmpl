@@ -6,12 +6,19 @@
     "shadow:watch": "npx shadow-cljs watch app",
     "shadow:release": "npx shadow-cljs release app",
     "tailwind:watch": "npx tailwindcss -i ./src/css/tailwind.css -o ./resources/public/css/compiled/site.css --watch",
-    "tailwind:release": "NODE_ENV=production npx tailwindcss -i ./src/css/tailwind.css -o ./resources/public/css/compiled/site.css --minify"
+    "tailwind:release": "NODE_ENV=production npx tailwindcss -i ./src/css/tailwind.css -o ./resources/public/css/compiled/site.css --minify",
+    "babel:watch": "npx babel src/js -d gen/js -x \".js,.jsx,.es6,.es,.mjs,.cjs,.ts,.tsx\" --watch",
+    "babel:release": "npx babel src/js -d gen/js -x \".js,.jsx,.es6,.es,.mjs,.cjs,.ts,.tsx\""
   },
   "devDependencies": {
     "npm-run-all": "^{{deps/npm-run-all}}",
     "shadow-cljs": "^{{deps/shadow-cljs}}",
-    "tailwindcss": "^{{deps/tailwindcss}}"
+    "tailwindcss": "^{{deps/tailwindcss}}",
+    "@babel/cli": "^{{deps/babel-cli}}",
+    "@babel/core": "^{{deps/babel-core}}",
+    "@babel/preset-env": "^{{deps/babel-preset-env}}",
+    "@babel/preset-react": "^{{deps/babel-preset-react}}",
+    "@babel/preset-typescript": "^{{deps/babel-preset-typescript}}"
   },
   "dependencies": {
     "react": "^{{deps/react}}",
