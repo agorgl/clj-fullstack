@@ -22,22 +22,33 @@
   ["reagent"
    "re-frame"])
 
+(defn dep-name [dep]
+  (let [[s1 s2 :as name-parts]
+        (-> dep
+            (str/replace "@" "")
+            (str/split #"/"))]
+    (cond
+      (= (count name-parts) 1) s1
+      (= s1 s2) s1
+      (str/includes? s1 ".") s2
+      :else (str s1 "-" s2))))
+
 (defn data-fn
   "Result is merged onto existing options data."
   [data]
   (let [versions
         (->> (concat
               (for [d node-deps]
-                [(keyword "deps" (-> d (str/split #"/") (last)))
+                [(keyword "deps" (dep-name d))
                  (str/trim-newline
                   (:out (sh "npm" "view" d "version")))])
               (for [d clj-deps]
-                [(keyword "deps" (-> d (str/split #"/") (last)))
+                [(keyword "deps" (dep-name d))
                  (-> (:out (sh "clojure" "-X:deps" "find-versions" ":lib" d ":n" "1"))
                      (edn/read-string)
                      :mvn/version)])
               (for [d cljs-deps]
-                [(keyword "deps" d)
+                [(keyword "deps" (dep-name d))
                  (-> (:out (sh "clojure" "-X:deps" "find-versions" ":lib" d ":n" "1"))
                      (edn/read-string)
                      :mvn/version)]))
