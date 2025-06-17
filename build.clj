@@ -27,6 +27,25 @@
       (throw (ex-info "Tests failed" {}))))
   opts)
 
+(defn cljs
+  "Build the cljs sources"
+  [opts]
+  (let [basis (b/create-basis {:aliases [:cljs]})
+        cmds (b/java-command
+              {:basis basis
+               :main 'clojure.main
+               :main-args ["-m" "shadow.cljs.devtools.cli" "release" "app"]})
+        {:keys [exit]} (b/process cmds)]
+    (when-not (zero? exit)
+      (throw (ex-info "Building cljs failed" {}))))
+  opts)
+
+(defn resources
+  "Build the resources"
+  [opts]
+  (cljs opts)
+  opts)
+
 (defn- uber-opts [opts]
   (assoc opts
          :lib lib
@@ -42,6 +61,8 @@
   [opts]
   (clean opts)
   (let [opts (uber-opts opts)]
+    (println "Building resources...")
+    (resources opts)
     (println "Copying source...")
     (b/copy-dir {:src-dirs ["resources" "src/clj"] :target-dir class-dir})
     (println (str "Compiling " main "..."))

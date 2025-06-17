@@ -17,6 +17,7 @@
 .project
 .rebel_readline_history
 .settings
+.shadow-cljs/
 .socket-repl-port
 .sw*
 .vscode

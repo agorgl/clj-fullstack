@@ -1,0 +1,16 @@
+{:deps {:aliases [:cljs]}
+
+ :nrepl
+ {:init-ns user}
+
+ :dev-http
+ {8280 ["resources/public" "target/classes/public" "classpath:public"]}
+
+ :builds
+ {:app
+  {:target     :browser
+   :output-dir "target/classes/public/js"
+   :asset-path "/js"
+   :modules    {:app {:init-fn example.clj-fullstack.core/init}}
+   :devtools   {:repl-init-ns user
+                :watch-dir "target/classes/public"}}}}
