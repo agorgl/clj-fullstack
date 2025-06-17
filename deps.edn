@@ -1,10 +1,7 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/clojure {:mvn/version "1.12.1"}}
  :aliases
- {:run-m {:main-opts ["-m" "example.clj-fullstack.core"]}
-  :run-x {:ns-default example.clj-fullstack.core
-          :exec-fn greet
-          :exec-args {:name "Clojure"}}
+ {:run {:main-opts ["-m" "example.clj-fullstack.core"]}
   :build {:deps {io.github.clojure/tools.build {:mvn/version "0.10.9"}}
           :ns-default build}
   :test {:extra-paths ["test"]
