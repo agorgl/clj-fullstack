@@ -8,6 +8,12 @@
 (def main 'example.clj-fullstack.core)
 (def class-dir "target/classes")
 
+(defn clean
+  "Remove the target directory"
+  [opts]
+  (b/delete {:path "target"})
+  opts)
+
 (defn test
   "Run all the tests"
   [opts]
@@ -34,7 +40,7 @@
 (defn uber
   "Build the uberjar"
   [opts]
-  (b/delete {:path "target"})
+  (clean opts)
   (let [opts (uber-opts opts)]
     (println "Copying source...")
     (b/copy-dir {:src-dirs ["resources" "src"] :target-dir class-dir})
