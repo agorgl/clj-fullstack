@@ -25,6 +25,8 @@
 *.jar
 *.swp
 *~
+package-lock.json
 /checkouts
 /classes
+/node_modules
 /target

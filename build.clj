@@ -40,10 +40,33 @@
       (throw (ex-info "Building cljs failed" {}))))
   opts)
 
+(defn node-dependencies
+  "Install node dependencies"
+  [opts]
+  (let [cmds {:command-args ["npm" "install"]}
+        {:keys [exit]} (b/process cmds)]
+    (when-not (zero? exit)
+      (throw (ex-info "Installing node dependencies failed" {}))))
+  opts)
+
+(defn css
+  "Build the css sources"
+  [opts]
+  (node-dependencies opts)
+  (let [cmds {:command-args ["npx" "@tailwindcss/cli"
+                             "-i" "./src/css/tailwind.css"
+                             "-o" "./target/classes/public/css/tailwind.css"
+                             "--minify"]}
+        {:keys [exit]} (b/process cmds)]
+    (when-not (zero? exit)
+      (throw (ex-info "Building css failed" {}))))
+  opts)
+
 (defn resources
   "Build the resources"
   [opts]
   (cljs opts)
+  (css opts)
   opts)
 
 (defn- uber-opts [opts]
