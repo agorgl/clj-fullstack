@@ -11,6 +11,7 @@
   </appender>
 
   <logger name="org.eclipse.jetty" level="info" />
+  <logger name="io.undertow" level="info" />
 
   <root level="debug">
     <appender-ref ref="stdout" />
