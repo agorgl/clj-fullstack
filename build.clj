@@ -34,7 +34,7 @@
          :uber-file (format "target/%s-%s.jar" lib version)
          :basis (b/create-basis {})
          :class-dir class-dir
-         :src-dirs ["src"]
+         :src-dirs ["src/clj"]
          :ns-compile [main]))
 
 (defn uber
@@ -43,7 +43,7 @@
   (clean opts)
   (let [opts (uber-opts opts)]
     (println "Copying source...")
-    (b/copy-dir {:src-dirs ["resources" "src"] :target-dir class-dir})
+    (b/copy-dir {:src-dirs ["resources" "src/clj"] :target-dir class-dir})
     (println (str "Compiling " main "..."))
     (b/compile-clj opts)
     (println "Building JAR...")
