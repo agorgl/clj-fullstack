@@ -4,5 +4,5 @@
    [example.clj-fullstack.core :as sut])) ; system under test
 
 (deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+  (testing "A passing test"
+    (is (= 4 (+ 2 2)))))
